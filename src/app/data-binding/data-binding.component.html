@@ -1,0 +1,22 @@
+<div class="h-25 w-100 d-flex px-5 py-5 bg-primary">
+
+    Binding the First Propert as "{{firstProperty}}"
+</div>
+
+<!-- Event Binding && property binding-->
+
+<div class="w-100 d-flex px-1 py-2 bg-warning px-3">
+    <input class="w-100 d-flex mx-3 " type="text" placeholder="Enter Some Text To Bind" (input)="checkValid($event)">
+
+    <button [disabled]="isDisabled" (click)="consoles()">checks</button>
+
+</div>
+
+<!-- Using Ng-Model Directives -->
+<div class="w-100 d-flex px-1 py-2 bg-warning px-3">
+    <input class="w-100 d-flex mx-3 " type="text" [(ngModel)]="firstProperty" placeholder="Enter Some Text To Bind"
+        (input)="checkValid($event)">
+
+    <button [disabled]="isDisabled" (click)="consoles()">checks</button>
+
+</div>
