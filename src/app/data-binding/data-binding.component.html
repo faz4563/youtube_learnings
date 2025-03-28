@@ -1,22 +1,93 @@
-<div class="h-25 w-100 d-flex px-5 py-5 bg-primary">
-
-    Binding the First Propert as "{{firstProperty}}"
-</div>
+<!-- <div class="h-25 w-100 d-flex px-5 py-5 bg-primary">
+  Binding the First Propert as "{{ firstProperty }}"
+</div> -->
 
 <!-- Event Binding && property binding-->
 
-<div class="w-100 d-flex px-1 py-2 bg-warning px-3">
-    <input class="w-100 d-flex mx-3 " type="text" placeholder="Enter Some Text To Bind" (input)="checkValid($event)">
+<!-- <div class="w-100 d-flex px-1 py-2 bg-warning px-3">
+  <input
+    class="w-100 d-flex mx-3"
+    type="text"
+    placeholder="Enter Some Text To Bind"
+    (input)="checkValid($event)"
+  />
 
-    <button [disabled]="isDisabled" (click)="consoles()">checks</button>
-
-</div>
+  <button [disabled]="isDisabled" (click)="consoles()">checks</button>
+</div> -->
 
 <!-- Using Ng-Model Directives -->
-<div class="w-100 d-flex px-1 py-2 bg-warning px-3">
-    <input class="w-100 d-flex mx-3 " type="text" [(ngModel)]="firstProperty" placeholder="Enter Some Text To Bind"
-        (input)="checkValid($event)">
+<!-- <div class="w-100 d-flex px-1 py-2 bg-warning px-3">
+  <input
+    class="w-100 d-flex mx-3"
+    type="text"
+    [(ngModel)]="firstProperty"
+    placeholder="Enter Some Text To Bind"
+    (input)="checkValid($event)"
+  />
 
-    <button [disabled]="isDisabled" (click)="consoles()">checks</button>
+  <button [disabled]="isDisabled" (click)="consoles()">checks</button>
+</div> -->
 
+<!-- Using Structural and Attribute Directives -->
+
+<!-- <div class="container-fluid bg-danger my-3">
+  <div class="row py-5 px-0">
+    <div class="bg-primary px-3 py-3">
+      <button class="mx-3 my-3 btn btn-warning" (click)="selectedNumber = 2">
+        Number Divisible by 2
+      </button>
+      <button class="mx-3 my-3 btn btn-warning" (click)="selectedNumber = 3">
+        Number Divisible by 3
+      </button>
+      <button class="mx-3 my-3 btn btn-warning" (click)="selectedNumber = 5">
+        Number Divisible by 5
+      </button>
+      <button class="mx-3 my-3 btn btn-warning" (click)="selectedNumber = 10">
+        Number Divisible by 10
+      </button>
+    </div>
+    <div class="numbersContainer">
+      @for (item of numbersArray; track $index) {
+      <p
+        class="px-3 py-2 mx-3"
+        [ngStyle]="{
+          width: '50px',
+          'text-align': 'center',
+          'background-color': item % selectedNumber === 0 ? 'green' : 'grey',
+          color: 'white'
+        }"
+      >
+        {{ item }}
+      </p>
+      } -->
+<!-- <div *ngFor="let item of numbersArray; let i = index">
+                <p class="px-3 py-2 mx-3"
+                    [ngStyle]="{ 'background-color': item % selectedNumber === 0 ? 'green' : 'grey', 'color':'white' }">
+                    {{ item }}
+                </p>
+            </div> -->
+<!-- </div>
+  </div>
+</div> -->
+
+
+
+<div class="btnSections">
+    <div class="col-md-3">
+        <button type="button" class="btn btn-primary" (click)="filterProductData('Electronics')">Electronics</button>
+    </div>
+    <div class="col-md-3">
+        <button type="button" class="btn btn-warning" (click)="filterProductData('Clothing')">Clothing</button>
+    </div>
+    <div class="col-md-3">
+        <button type="button" class="btn btn-danger" (click)="filterProductData('Food')">Food</button>
+    </div>
+</div>
+
+<div class="bodyContent">
+    <div style="display: flex; flex-wrap: wrap; width: 100%;">
+    @for (item of products; track $index; let i = $index) {
+        <span class="card mx-1 my-1 px-3 py-2 align-middle">{{item.name}}</span>
+    }
+</div>
 </div>
