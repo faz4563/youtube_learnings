@@ -23,3 +23,30 @@
     background-color: aqua;
 
 }
+
+.circle {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+}
+
+.rectangle {
+    width: 150px;
+    height: 100px;
+    background-color: green;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid yellow;
+}

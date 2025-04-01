@@ -70,24 +70,87 @@
   </div>
 </div> -->
 
-
-
-<div class="btnSections">
-    <div class="col-md-3">
-        <button type="button" class="btn btn-primary" (click)="filterProductData('Electronics')">Electronics</button>
-    </div>
-    <div class="col-md-3">
-        <button type="button" class="btn btn-warning" (click)="filterProductData('Clothing')">Clothing</button>
-    </div>
-    <div class="col-md-3">
-        <button type="button" class="btn btn-danger" (click)="filterProductData('Food')">Food</button>
-    </div>
+<!-- <div class="btnSections">
+  <div class="col-md-3">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="filterProductData('Electronics')"
+    >
+      Electronics
+    </button>
+  </div>
+  <div class="col-md-3">
+    <button
+      type="button"
+      class="btn btn-warning"
+      (click)="filterProductData('Clothing')"
+    >
+      Clothing
+    </button>
+  </div>
+  <div class="col-md-3">
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="filterProductData('Food')"
+    >
+      Food
+    </button>
+  </div>
 </div>
-
-<div class="bodyContent">
-    <div style="display: flex; flex-wrap: wrap; width: 100%;">
-    @for (item of products; track $index; let i = $index) {
-        <span class="card mx-1 my-1 px-3 py-2 align-middle">{{item.name}}</span>
-    }
+<div>
+  <p>Selected Category is {{ selectedCategory }}</p>
 </div>
+<app-comp1
+  [productsFromParent]="products"
+  (dataToParent)="dataFromChild($event)"
+></app-comp1> -->
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6">
+      <select (change)="[setShapes($event)]">
+        <option>Select</option>
+        <option
+          *ngFor="let item of this.dataList; let i = index"
+          [value]="item.shape"
+        >
+          {{ item.shape }}
+        </option>
+      </select>
+    </div>
+    <div class="col-6">
+      <select (change)="[changeColor($event)]">
+        <option>Select</option>
+        <option
+          *ngFor="let item of this.colorList; let i = index"
+          [value]="item.color"
+        >
+          {{ item.color }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div
+    [ngClass]="[getShapes(selectedShape)]"
+    [ngStyle]="{
+      'background-color':
+        selectedColor !== ''
+          ? selectedShape === 'triangle'
+            ? 'transparent'
+            : getColors(selectedColor)
+          : 'transparent',
+
+      'border-bottom':
+        selectedColor !== ''
+          ? selectedShape === 'triangle'
+            ? '100px solid ' + getColors(selectedColor)
+            : null
+          : 'transparent',
+
+      border: selectedColor !== '' ? '' : '1px solid black'
+    }"
+  ></div>
 </div>
