@@ -106,51 +106,40 @@
   [productsFromParent]="products"
   (dataToParent)="dataFromChild($event)"
 ></app-comp1> -->
-
 <div class="container-fluid">
   <div class="row">
-    <div class="col-6">
-      <select (change)="[setShapes($event)]">
-        <option>Select</option>
-        <option
-          *ngFor="let item of this.dataList; let i = index"
-          [value]="item.shape"
-        >
-          {{ item.shape }}
-        </option>
-      </select>
-    </div>
-    <div class="col-6">
-      <select (change)="[changeColor($event)]">
-        <option>Select</option>
-        <option
-          *ngFor="let item of this.colorList; let i = index"
-          [value]="item.color"
-        >
-          {{ item.color }}
-        </option>
-      </select>
-    </div>
+    <div class="col-6"></div>
+    <select (change)="onShapeChange($event)">
+      <option>Select</option>
+      <option *ngFor="let item of shapesList; let i = index" [value]="item.shape">
+        {{ item.shape }}
+      </option>
+    </select>
   </div>
+  <div class="col-6">
+    <select (change)="onColorChange($event)">
+      <option>Select</option>
+      <option *ngFor="let item of colorsList; let i = index" [value]="item.color">
+        {{ item.color }}
+      </option>
+    </select>
+  </div>
+</div>
 
-  <div
-    [ngClass]="[getShapes(selectedShape)]"
-    [ngStyle]="{
+<div [ngClass]="[selectedShape]" [ngStyle]="{
       'background-color':
         selectedColor !== ''
           ? selectedShape === 'triangle'
             ? 'transparent'
-            : getColors(selectedColor)
+            : selectedColor
           : 'transparent',
 
       'border-bottom':
         selectedColor !== ''
           ? selectedShape === 'triangle'
-            ? '100px solid ' + getColors(selectedColor)
+            ? '100px solid ' + selectedColor
             : null
           : 'transparent',
 
       border: selectedColor !== '' ? '' : '1px solid black'
-    }"
-  ></div>
-</div>
+    }"></div>
