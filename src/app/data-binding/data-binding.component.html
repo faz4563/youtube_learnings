@@ -1,9 +1,7 @@
 <!-- <div class="h-25 w-100 d-flex px-5 py-5 bg-primary">
   Binding the First Propert as "{{ firstProperty }}"
 </div> -->
-
 <!-- Event Binding && property binding-->
-
 <!-- <div class="w-100 d-flex px-1 py-2 bg-warning px-3">
   <input
     class="w-100 d-flex mx-3"
@@ -14,7 +12,6 @@
 
   <button [disabled]="isDisabled" (click)="consoles()">checks</button>
 </div> -->
-
 <!-- Using Ng-Model Directives -->
 <!-- <div class="w-100 d-flex px-1 py-2 bg-warning px-3">
   <input
@@ -27,9 +24,7 @@
 
   <button [disabled]="isDisabled" (click)="consoles()">checks</button>
 </div> -->
-
 <!-- Using Structural and Attribute Directives -->
-
 <!-- <div class="container-fluid bg-danger my-3">
   <div class="row py-5 px-0">
     <div class="bg-primary px-3 py-3">
@@ -69,7 +64,6 @@
 <!-- </div>
   </div>
 </div> -->
-
 <!-- <div class="btnSections">
   <div class="col-md-3">
     <button
@@ -106,40 +100,74 @@
   [productsFromParent]="products"
   (dataToParent)="dataFromChild($event)"
 ></app-comp1> -->
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div class="row">
-    <div class="col-6"></div>
-    <select (change)="onShapeChange($event)">
-      <option>Select</option>
-      <option *ngFor="let item of shapesList; let i = index" [value]="item.shape">
-        {{ item.shape }}
-      </option>
-    </select>
-  </div>
-  <div class="col-6">
-    <select (change)="onColorChange($event)">
-      <option>Select</option>
-      <option *ngFor="let item of colorsList; let i = index" [value]="item.color">
-        {{ item.color }}
-      </option>
-    </select>
+    <div class="col-6">
+      <select (change)="onShapeChange($event)">
+        <option>Select</option>
+        <option
+          *ngFor="let item of shapesList; let i = index"
+          [value]="item.shape"
+        >
+          {{ item.shape }}
+        </option>
+      </select>
+    </div>
+    <div class="col-6">
+      <select (change)="onColorChange($event)">
+        <option>Select</option>
+        <option
+          *ngFor="let item of colorsList; let i = index"
+          [value]="item.color"
+        >
+          {{ item.color }}
+        </option>
+      </select>
+    </div>
   </div>
 </div>
+<div
+  [ngClass]="[selectedShape]"
+  [ngStyle]="{
+    'background-color':
+      selectedColor !== ''
+        ? selectedShape === 'triangle'
+          ? 'transparent'
+          : selectedColor
+        : 'transparent',
 
-<div [ngClass]="[selectedShape]" [ngStyle]="{
-      'background-color':
-        selectedColor !== ''
-          ? selectedShape === 'triangle'
-            ? 'transparent'
-            : selectedColor
-          : 'transparent',
+    'border-bottom':
+      selectedColor !== ''
+        ? selectedShape === 'triangle'
+          ? '100px solid ' + selectedColor
+          : null
+        : 'transparent',
 
-      'border-bottom':
-        selectedColor !== ''
-          ? selectedShape === 'triangle'
-            ? '100px solid ' + selectedColor
-            : null
-          : 'transparent',
+    border: selectedColor !== '' ? '' : '1px solid black'
+  }"
+></div>
+ -->
 
-      border: selectedColor !== '' ? '' : '1px solid black'
-    }"></div>
+<div class="row">
+  <div class="col-2 baseContainer">
+    <h4>Analyze Word</h4>
+    <input
+      type="text"
+      class="text"
+      #txtInput
+      placeholder="Enter Your Name"
+      (input)="setTotChar()"
+    />
+    <h4>Results</h4>
+    <h4>No Of Characters : {{ totalChar }}</h4>
+    <h4>Vowels</h4>
+    <p *ngFor="let i of vowelList">
+      {{i.key.toUpperCase()}} : {{i.val}}
+    </p>
+
+
+  </div>
+  
+  <div>
+  </div>
+</div>
