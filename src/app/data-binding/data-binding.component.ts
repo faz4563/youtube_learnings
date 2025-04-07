@@ -67,32 +67,32 @@ export class DataBindingComponent {
   //   }
   // } 
 // ----------------------Template Driven Forms-------------------
-  @ViewChild('fifthStdForm') formDivUi!: ElementRef;
-  formList: { rollNo: string; class: string }[] = [];
+//   @ViewChild('fifthStdForm') formDivUi!: ElementRef;
+//   formList: { rollNo: string; class: string }[] = [];
 
-  addForm() {
-    this.formList.push({ rollNo: '', class: '' });
-    console.log(':::::::::::::::::', this.formList);
+//   addForm() {
+//     this.formList.push({ rollNo: '', class: '' });
+//     console.log(':::::::::::::::::', this.formList);
 
-    const ids = (this.formList.length - 1).toString();
-    console.log('ids:', ids);
-    setTimeout(() => {
-      const element = document.getElementById(ids);
-      console.log('element:', element);
-      if (element) {
-        element.scrollIntoView({ behavior: 'auto' });
-      }
-    }, 0);
-  }
-  removeForm(index: number) {
-    console.log('index:', index);
-    this.formList.splice(index, 1);
-    console.log(':::::::::::::::::', this.formList);
-  }
-  onSubmit(form: any) {  
-    form.reset()
+//     const ids = (this.formList.length - 1).toString();
+//     console.log('ids:', ids);
+//     setTimeout(() => {
+//       const element = document.getElementById(ids);
+//       console.log('element:', element);
+//       if (element) {
+//         element.scrollIntoView({ behavior: 'auto' });
+//       }
+//     }, 0);
+//   }
+//   removeForm(index: number) {
+//     console.log('index:', index);
+//     this.formList.splice(index, 1);
+//     console.log(':::::::::::::::::', this.formList);
+//   }
+//   onSubmit(form: any) {  
+//     form.reset()
 
-    console.log('Form submitted:', this.formList);
-    console.log('Form submitted:', this.formList);
-  }
+//     console.log('Form submitted:', this.formList);
+//     console.log('Form submitted:', this.formList);
+//   }
 }
