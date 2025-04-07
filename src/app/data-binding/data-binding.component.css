@@ -51,8 +51,7 @@
     border-bottom: 100px solid yellow;
 } */
 
-
-.baseContainer{
+/* .baseContainer{
     display: flex;
     width: 100%;
     min-height: 100vh;
@@ -62,4 +61,36 @@
     text-align: center;
     gap: 15px;
 
+} */
+
+.conts {
+    min-height: 100vh;
+
+    width: 100%;
+    background-color: aqua;
+    box-sizing: border-box;
+}
+
+.formCont {
+    height: fit-content;
+    background-color: grey;
+    padding: 20px;
+    border-radius: 15px;
+    width: 300px;
+    margin: 10px auto;
+    color: white;
+}
+
+.ng-invalid .ng-touched {
+    border: 1px solid red !important;
+}
+input .ng-dirty  .ng-untouched {
+    border: 5px solid green !important;
+}
+
+
+.form-control:focus {
+    border: 1px solid blue !important;
+    outline: none !important;
+    box-shadow: none !important;
 }

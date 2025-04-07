@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  TemplateRef,
+  viewChild,
+  ViewChild,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonService } from '../services/common.service';
 
@@ -32,35 +38,61 @@ export class DataBindingComponent {
   //   this.commonService.changeColor(event);
   //   this.selectedColor = this.commonService.selectedColor;
   // }
-  vowelList: Array<{ key: string; val: number }> = [
-    { key: 'a', val: 0 },
-    { key: 'e', val: 0 },
-    { key: 'i', val: 0 },
-    { key: 'o', val: 0 },
-    { key: 'u', val: 0 },
-  ];
-  @ViewChild('txtInput') inputElement!: ElementRef;
-  totalChar: number = 0;
-  setTotChar() {
-    this.vowelList = [
-      { key: 'a', val: 0 },
-      { key: 'e', val: 0 },
-      { key: 'i', val: 0 },
-      { key: 'o', val: 0 },
-      { key: 'u', val: 0 },
-    ];
-    this.totalChar = this.inputElement.nativeElement.value.length;
-    const typedVal = this.inputElement.nativeElement.value;
-    for (let index = 0; index < typedVal.length; index++) {
-      const char = typedVal[index];
-      const vowel = this.vowelList.find((v) => v.key === char);
-      if (vowel) {
-        vowel.val = (typedVal.match(new RegExp(vowel.key, 'g')) || []).length;
-        console.log(`${char} Found, Count: ${vowel.val}`);
-      } else {
-        console.log(char);
-        console.log('Not Found');
+
+  // vowelList: Array<{ key: string; val: number }> = [
+  //   { key: 'a', val: 0 },
+  //   { key: 'e', val: 0 },
+  //   { key: 'i', val: 0 },
+  //   { key: 'o', val: 0 },
+  //   { key: 'u', val: 0 },
+  // ];
+  // @ViewChild('txtInput') inputElement!: ElementRef;
+  // totalChar: number = 0;
+  // setTotChar() {
+  //   this.vowelList = [
+  //     { key: 'a', val: 0 },
+  //     { key: 'e', val: 0 },
+  //     { key: 'i', val: 0 },
+  //     { key: 'o', val: 0 },
+  //     { key: 'u', val: 0 },
+  //   ];
+  //   this.totalChar = this.inputElement.nativeElement.value.length;
+  //   const typedVal = this.inputElement.nativeElement.value;
+  //   for (let index = 0; index < typedVal.length; index++) {
+  //     const char = typedVal[index];
+  //     const vowel = this.vowelList.find((v) => v.key === char);
+  //     if (vowel) {
+  //       vowel.val = (typedVal.match(new RegExp(vowel.key, 'g')) || []).length;
+  //     }
+  //   }
+  // } 
+
+  @ViewChild('fifthStdForm') formDivUi!: ElementRef;
+  formList: { rollNo: string; class: string }[] = [];
+
+  addForm() {
+    this.formList.push({ rollNo: '', class: '' });
+    console.log(':::::::::::::::::', this.formList);
+
+    const ids = (this.formList.length - 1).toString();
+    console.log('ids:', ids);
+    setTimeout(() => {
+      const element = document.getElementById(ids);
+      console.log('element:', element);
+      if (element) {
+        element.scrollIntoView({ behavior: 'auto' });
       }
-    }
+    }, 0);
+  }
+  removeForm(index: number) {
+    console.log('index:', index);
+    this.formList.splice(index, 1);
+    console.log(':::::::::::::::::', this.formList);
+  }
+  onSubmit(form: any) {  
+    form.reset()
+
+    console.log('Form submitted:', this.formList);
+    console.log('Form submitted:', this.formList);
   }
 }

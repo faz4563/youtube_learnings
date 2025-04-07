@@ -147,7 +147,7 @@
   }"
 ></div>
  -->
-
+<!-- 
 <div class="row">
   <div class="col-2 baseContainer">
     <h4>Analyze Word</h4>
@@ -169,5 +169,92 @@
   </div>
   
   <div>
+  </div>
+</div> -->
+
+<div class="container-fluid conts">
+  <div class="">
+    <form
+      #fifthStdForm="ngForm" 
+      (ngSubmit)="onSubmit(fifthStdForm)"
+      class="mx-2 py-2 row"
+      style="height: fit-content"
+    >
+      <div *ngFor="let item of formList; let i = index" class="col-2" [id]="i">
+        <div class="formCont">
+          <div class="form-group py-2">
+            <button
+              style="
+                float: right;
+                position: relative;
+                display: flex;
+                top: -20px;
+                background-color: transparent;
+                border: none;
+              "
+              class="btn btn-danger"
+              type="button"
+              (click)="removeForm(i)"
+            >
+              ( X )
+            </button>
+            <label>Student Name {{ i }}</label>
+            <input
+              type="text"
+              required
+              [(ngModel)]="formList[i].rollNo"
+              name="rollNo{{ i }}"
+              #rollNoRef="ngModel"
+              placeholder="Enter Your Roll No"
+              class="form-control"
+              style="margin: 10px 0px"
+            />
+            <div
+              *ngIf="
+                rollNoRef.invalid && rollNoRef.touched && rollNoRef.value === '' 
+              "
+              class="text-danger"
+            >
+              Roll No is required
+            </div>
+          </div>
+          <div class="form-group py-2">
+            <input
+              type="text"
+              required
+              [(ngModel)]="formList[i].class"
+              name="class{{ i }}"
+              #classRef="ngModel"
+              placeholder="Enter Your Class"
+              class="form-control"
+              style="margin: 10px 0px"
+            />
+            <div
+              *ngIf="classRef.invalid && classRef.touched"
+              class="text-danger"
+            >
+              Class is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          position: fixed;
+          bottom: 5px;
+          right: 5px;
+          width: 150px;
+          height: auto;
+        "
+      >
+        <button type="submit" class="btn btn-success">Save Form</button>
+        <button type="button" class="btn btn-primary" (click)="addForm()">
+          Add Form Field
+        </button>
+      </div>
+    </form>
   </div>
 </div>
