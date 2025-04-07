@@ -66,7 +66,7 @@ export class DataBindingComponent {
   //     }
   //   }
   // } 
-
+// ----------------------Template Driven Forms-------------------
   @ViewChild('fifthStdForm') formDivUi!: ElementRef;
   formList: { rollNo: string; class: string }[] = [];
 
